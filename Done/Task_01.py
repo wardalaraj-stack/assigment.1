@@ -1,15 +1,15 @@
 def print_menu():
 	# Display all services that the dispatcher can select.
 	# Each print statement creates one exact line of the required menu.
-	print("HARBORFLOW DISPATCH CONSOLE")
-	print("1. Close console")
-	print("2. Validate booking reference")
-	print("3. Calculate delivery quote")
-	print("4. Consolidate parcel labels")
-	print("5. Check van capacity")
-	print("6. Classify service performance")
-	print("7. Produce weekly dispatch report")
-	print("8. Compare service scenarios")
+	print("""HARBORFLOW DISPATCH CONSOLE
+	1. Close console
+	2. Validate booking reference
+	3. Calculate delivery quote
+	4. Consolidate parcel labels
+	5. Check van capacity
+	6. Classify service performance
+	7. Produce weekly dispatch report
+	8. Compare service scenarios""")
 
 
 def main():
