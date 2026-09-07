@@ -1,0 +1,6 @@
+TASK 6: Classify service performance
+
+[ ] Read promised time, actual time, and damaged parcels
+[ ] Calculate the delay
+[ ] Give damage priority
+[ ] Print the delay and service status

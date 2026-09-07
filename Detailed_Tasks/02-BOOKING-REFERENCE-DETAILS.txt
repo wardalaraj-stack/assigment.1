@@ -1,0 +1,73 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 2: VALIDATE BOOKING REFERENCES
+
+Goal
+Create a booking-reference service that accepts a booking reference, normalizes
+it, checks the required HarborFlow format, and reports whether it is valid.
+The service must return to the main menu after it finishes.
+
+Input and normalization
+The service must:
+
+[ ] Ask the user to enter one booking reference.
+[ ] Remove leading and trailing spaces.
+[ ] Treat lowercase letters as uppercase letters for validation.
+[ ] Use the normalized value for both validation and output.
+[ ] Not modify the required hyphens or insert missing characters.
+
+Required format
+The valid format is HFL-CCC-NNNN:
+
+- The first section is exactly HFL.
+- The sections are separated by hyphens.
+- CCC contains exactly three uppercase alphabetic characters.
+- NNNN contains exactly four decimal digits.
+- No extra characters may appear before or after the reference.
+
+Implementation steps
+
+[ ] Create a separate validate_booking_reference() function.
+[ ] Read the reference with input().
+[ ] Strip surrounding whitespace and convert the reference to uppercase.
+[ ] Check the complete format with length, position, and character checks.
+[ ] Do not use regular expressions.
+[ ] Print the normalized reference and a valid result when it matches.
+[ ] Print an invalid result when it does not match.
+[ ] Keep the service independent from the main-menu loop.
+[ ] Return to main() after printing the result.
+
+Suggested result behavior
+
+For a valid value, print a clear result containing:
+  Booking reference: HFL-ABC-1234
+  Valid booking reference.
+
+For an invalid value, print:
+  Invalid booking reference.
+
+The exact result wording should remain consistent for every input. Do not close
+the console or print the main-menu closing message from this service.
+
+Testing checklist
+
+Valid references
+[ ] HFL-ABC-1234 is accepted.
+[ ] hfl-abc-1234 is normalized and accepted.
+[ ] A valid reference surrounded by spaces is accepted after stripping.
+
+Invalid references
+[ ] A reference with the wrong prefix is rejected.
+[ ] A reference with fewer or more than three letters is rejected.
+[ ] A reference with fewer or more than four digits is rejected.
+[ ] A reference containing letters in the numeric section is rejected.
+[ ] A reference with missing, extra, or misplaced hyphens is rejected.
+[ ] An empty reference is rejected.
+
+Acceptance result
+
+[ ] Spaces and lowercase letters are normalized.
+[ ] Only HFL-CCC-NNNN references are accepted.
+[ ] The service prints a valid or invalid result.
+[ ] The service returns to the persistent menu.
+[ ] The closing message is not printed by this service.
+[ ] Test results are recorded in test-ledger.csv.

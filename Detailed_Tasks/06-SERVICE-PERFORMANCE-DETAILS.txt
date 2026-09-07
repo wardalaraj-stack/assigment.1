@@ -1,0 +1,67 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 6: CLASSIFY SERVICE PERFORMANCE
+
+Goal
+Create a performance service that compares promised and actual delivery time,
+calculates the delay, gives damaged parcels priority over timing, and prints a
+service status. The service must return to the main menu when complete.
+
+Inputs and calculation
+
+[ ] Read promised delivery time in minutes.
+[ ] Read actual delivery time in minutes.
+[ ] Read the number of damaged parcels.
+[ ] Calculate delay as actual time minus promised time.
+[ ] A negative delay means the delivery was early.
+[ ] A zero delay means the delivery was exactly on time.
+[ ] Reject negative values for all three inputs.
+
+Status rules
+
+Apply the rules in this order:
+
+1. If damaged parcels is greater than zero, status is SERVICE FAILURE.
+2. Otherwise, if delay is less than or equal to zero, status is ON TIME.
+3. Otherwise, if delay is 15 minutes or less, status is MINOR DELAY.
+4. Otherwise, status is MAJOR DELAY.
+
+Damage has priority even when the delivery was early or on time. The 15-minute
+boundary must be classified as MINOR DELAY.
+
+Implementation steps
+
+[ ] Create a separate classify_service_performance() function.
+[ ] Read and validate the three inputs.
+[ ] Calculate the signed delay.
+[ ] Check damaged parcels before checking timing status.
+[ ] Print the delay in minutes and the selected status.
+[ ] Keep classification logic separate from input and output code.
+[ ] Return to the main menu after printing the result.
+
+Suggested output
+
+  Delay: 15 minutes
+  Service status: MINOR DELAY
+
+For early deliveries, print the negative delay or an equivalent clear early
+value. Do not hide the sign because it explains how the status was determined.
+
+Testing checklist
+
+[ ] Test an early delivery.
+[ ] Test a delivery exactly on time.
+[ ] Test a 15-minute delay and confirm MINOR DELAY.
+[ ] Test a delay greater than 15 minutes and confirm MAJOR DELAY.
+[ ] Test damaged parcels with an early delivery and confirm SERVICE FAILURE.
+[ ] Test damaged parcels with a late delivery and confirm SERVICE FAILURE.
+[ ] Test zero damaged parcels for each timing status.
+[ ] Test negative input values and confirm they are rejected.
+
+Acceptance result
+
+[ ] Delay is calculated as actual minus promised time.
+[ ] Damage status takes priority over timing.
+[ ] Boundary delay of 15 minutes is MINOR DELAY.
+[ ] Delay and status are printed clearly.
+[ ] Invalid negative values do not crash the program.
+[ ] Test results are recorded in test-ledger.csv.

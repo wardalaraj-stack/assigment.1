@@ -1,0 +1,68 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 9: COMPARE SERVICE SCENARIOS
+
+Goal
+Create a comparison service that reads one distance and weight, calculates the
+price for Standard, Express, and Priority using the shared quote function, and
+identifies the cheapest and most expensive services.
+
+Inputs and dependencies
+
+[ ] Read one positive distance in kilometres.
+[ ] Read one positive parcel weight in kilograms.
+[ ] Reuse calculate_quote(distance, weight, service_code) from Task 3.
+[ ] Do not copy the pricing formulas into the comparison function.
+[ ] Use the same service codes and rates as the delivery-quote service.
+
+Services to compare
+
+- Standard, code S
+- Express, code X
+- Priority, code P
+
+Implementation steps
+
+[09.1] Create a separate compare_service_scenarios() function.
+[09.2] Read and validate distance and weight.
+[ ] Call the shared quote function once for each service.
+[ ] Store the three results with their service names.
+[ ] Print all three prices with exactly two decimal places.
+[ ] Find the minimum price and its service name.
+[ ] Find the maximum price and its service name.
+[ ] Print the cheapest and most expensive services.
+[ ] Return to the main menu after the comparison.
+
+Suggested output
+
+  Service comparison
+  Standard: 210.00 SEK
+  Express: 262.50 SEK
+  Priority: 336.00 SEK
+  Cheapest service: Standard
+  Most expensive service: Priority
+
+If two services have the same price, report the first service in the displayed
+comparison order unless the assignment specifies another tie rule. The same
+tie behavior must be used for cheapest and most expensive results.
+
+Testing checklist
+
+[ ] Test decimal distance and weight values.
+[ ] Test zero and negative distance and weight values and confirm rejection.
+[ ] Confirm all three service prices are printed.
+[ ] Confirm the cheapest service is identified correctly.
+[ ] Confirm the most expensive service is identified correctly.
+[ ] Test a tie and confirm the documented first-in-order behavior.
+[ ] Confirm the comparison uses the shared quote function.
+[ ] Confirm invalid distance and weight values are rejected with the required
+  validation message.
+
+Acceptance result
+
+[ ] Distance and weight are collected once.
+[ ] Standard, Express, and Priority are all compared.
+[ ] The Task 3 quote calculation function is reused.
+[ ] Prices are printed with two decimal places.
+[ ] Cheapest and most expensive services are identified.
+[ ] The service returns to the persistent menu.
+[ ] Test results are recorded in test-ledger.csv.

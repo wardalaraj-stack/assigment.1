@@ -1,0 +1,136 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 1: BUILD THE DISPATCH MENU
+
+Goal
+Create one persistent menu that lets the dispatcher access every service. The
+program must continue showing the menu after a service finishes and must close
+only when option 1 is selected.
+
+Required menu output
+Print this menu each time the main menu is shown:
+
+HARBORFLOW DISPATCH CONSOLE
+1. Close console
+2. Validate booking reference
+3. Calculate delivery quote
+4. Consolidate parcel labels
+5. Check van capacity
+6. Classify service performance
+7. Produce weekly dispatch report
+8. Compare service scenarios
+Select service:
+
+Implementation steps
+
+[ ] Create a main() function.
+[ ] Create a Boolean or similar loop-state variable for the active console.
+[ ] Use a while loop that continues while the console is active.
+[ ] Print the menu inside the while loop so it appears after every service.
+[ ] Read the user's choice using input().
+[ ] Convert a valid menu choice to an integer.
+[ ] Use if/elif/else logic to select the requested service.
+[ ] Call a separate function for each service.
+[ ] Keep feature implementation out of the menu branches.
+[ ] Set the loop state to stop when the choice is 1.
+[ ] Print the closing message exactly once when option 1 is selected.
+
+Menu branches
+
+Option 1
+- Change the loop state so the while loop ends.
+- Print exactly:
+  Console closed. Dispatch data remains safe.
+
+Option 2
+- Call the booking reference validation function.
+
+Option 3
+- Call the delivery quote function.
+
+Option 4
+- Call the parcel label consolidation function.
+
+Option 5
+- Call the van capacity function.
+
+Option 6
+- Call the service performance function.
+
+Option 7
+- Call the weekly dispatch report function.
+
+Option 8
+- Call the service comparison function.
+
+Invalid menu choices
+Task 8 adds validation to the menu. The program must:
+
+[ ] Accept only integer choices from 1 through 8.
+[ ] Print exactly this message for invalid input:
+  Error - Select a service from 1 to 8.
+[ ] Ask for the menu choice again after an error.
+[ ] Avoid crashing when the user enters non-integer text.
+[ ] Avoid returning to the menu before a valid choice is collected.
+
+Suggested control flow
+
+main()
+    console_active = True
+
+    while console_active:
+        print the menu
+        read and validate a menu choice
+
+        if choice == 1:
+            print the closing message
+            console_active = False
+        elif choice == 2:
+            call the reference service
+        elif choice == 3:
+            call the quote service
+        elif choice == 4:
+            call the label service
+        elif choice == 5:
+            call the capacity service
+        elif choice == 6:
+            call the performance service
+        elif choice == 7:
+            call the weekly report service
+        elif choice == 8:
+            call the comparison service
+
+Program ending requirements
+
+[ ] Do not use exit().
+[ ] Do not close the program from inside a service function.
+[ ] The program starts by calling main() under:
+    if __name__ == "__main__":
+        main()
+[ ] Option 1 is the only normal way to close the console.
+[ ] The closing message is not printed when another option is selected.
+
+Testing checklist
+
+Basic menu tests
+[ ] Start the program and confirm the menu is printed first.
+[ ] Select option 2 and confirm the program returns to the menu afterward.
+[ ] Select options 3, 4, 5, 6, 7, and 8 and confirm each returns to the menu.
+[ ] Select option 1 and confirm the program closes.
+[ ] Confirm the closing message appears exactly once.
+
+Invalid input tests
+[ ] Enter 0 and check the required error message.
+[ ] Enter 9 and check the required error message.
+[ ] Enter -1 and check the required error message.
+[ ] Enter letters such as abc and confirm the program does not crash.
+[ ] Enter a decimal such as 2.5 and confirm it is rejected if it is not an integer.
+
+Acceptance result
+
+[ ] Menu text matches the assignment exactly.
+[ ] All eight options are available.
+[ ] Each option calls a separate service function.
+[ ] The menu repeats after completed services.
+[ ] Invalid choices are handled safely.
+[ ] Option 1 closes the loop and prints the closing message once.
+[ ] Test results are recorded in test-ledger.csv.

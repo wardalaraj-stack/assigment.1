@@ -1,0 +1,6 @@
+TASK 4: Consolidate parcel labels
+
+[ ] Split labels at commas
+[ ] Normalize labels
+[ ] Keep each label once in first-seen order
+[ ] Print numbered labels and the total

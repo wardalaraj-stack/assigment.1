@@ -1,0 +1,7 @@
+TASK 9: Compare service scenarios
+
+[ ] Read distance and weight
+[ ] Reuse the quote calculation function
+[ ] Print Standard, Express, and Priority prices
+[ ] Identify the cheapest service
+[ ] Identify the most expensive service

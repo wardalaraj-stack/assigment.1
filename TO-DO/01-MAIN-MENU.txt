@@ -1,0 +1,6 @@
+TASK 1: Main menu
+
+[ ] Print the exact dispatch menu
+[ ] Keep the console running with a while loop
+[ ] Handle options 1 to 8
+[ ] Close only through option 1

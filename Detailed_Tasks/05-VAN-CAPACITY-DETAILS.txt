@@ -1,0 +1,70 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 5: CHECK VAN CAPACITY
+
+Goal
+Create a van-capacity service that reads a van capacity and parcel weights,
+processes parcels from left to right, accepts every parcel that fits in the
+remaining capacity, rejects parcels that do not fit, and continues checking
+later parcels.
+
+Inputs and rules
+
+[ ] Read the van capacity in kilograms.
+[ ] Read a comma-separated list of parcel weights in kilograms.
+[ ] Require the capacity and every weight to be positive numbers.
+[ ] Strip spaces around each weight.
+[ ] Process weights in their original left-to-right order.
+[ ] Start the remaining capacity at the entered capacity.
+[ ] Accept a parcel when its weight is less than or equal to the remaining
+    capacity.
+[ ] Subtract accepted weights immediately.
+[ ] Reject a parcel when it is heavier than the remaining capacity.
+[ ] Do not stop after a rejection; continue with the next parcel.
+[ ] Do not subtract rejected weights.
+
+Implementation steps
+
+[ ] Create a separate check_van_capacity() function.
+[ ] Parse the capacity and parcel weights as numbers.
+[ ] Track accepted and rejected weights or parcel positions.
+[ ] Track the total accepted weight and remaining capacity.
+[ ] Print an accepted or rejected result for each parcel.
+[ ] Print the accepted parcel count, loaded weight, and remaining capacity with
+  the loaded and remaining weights formatted to two decimal places.
+[ ] Return to the main menu after the result is printed.
+
+Example
+
+Capacity: 10.00 kg
+Weights: 6, 7, 3
+
+Processing result:
+- 6.00 kg accepted; remaining capacity is 4.00 kg.
+- 7.00 kg rejected; it does not fit.
+- 3.00 kg accepted; remaining capacity is 1.00 kg.
+
+Final totals:
+  Accepted parcels: 2
+  Loaded weight: 9.00 kg
+  Remaining capacity: 1.00 kg
+
+Testing checklist
+
+[ ] Test a parcel that exactly fills the remaining capacity.
+[ ] Test a parcel heavier than the full capacity.
+[ ] Test a later lighter parcel after a rejected heavy parcel.
+[ ] Test all parcels fitting.
+[ ] Test no parcels fitting.
+[ ] Test decimal capacity and weights.
+[ ] Test zero and negative capacity or weights and confirm rejection.
+[ ] Confirm rejected parcels do not reduce remaining capacity.
+[ ] Confirm all totals use two decimal places.
+
+Acceptance result
+
+[ ] Capacity and weights are read safely.
+[ ] Parcels are processed left to right.
+[ ] Parcels that fit are accepted.
+[ ] Parcels that do not fit are rejected and later parcels are still checked.
+[ ] Accepted, rejected, and remaining totals are printed with two decimals.
+[ ] Test results are recorded in test-ledger.csv.

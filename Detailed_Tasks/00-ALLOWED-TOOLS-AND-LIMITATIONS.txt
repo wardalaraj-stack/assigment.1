@@ -1,0 +1,73 @@
+HARBORFLOW DISPATCH CONSOLE
+ASSIGNMENT 1: ALLOWED TOOLS AND LIMITATIONS
+
+Use this file as a quick guide while implementing Tasks 1-9. The assignment
+assesses basic Python programming concepts, so solutions must stay within the
+allowed technical scope.
+
+Allowed
+
+[ ] Python built-in functions and basic language features.
+[ ] The math library, if a calculation genuinely needs it.
+[ ] Variables, numbers, strings, Boolean values, lists, and list methods that
+    support the required algorithms.
+[ ] Arithmetic operators and formatted output.
+[ ] if/elif/else conditionals.
+[ ] for loops and while loops.
+[ ] Functions with meaningful arguments and return values.
+[ ] String operations such as strip(), upper(), split(), indexing, slicing,
+    len(), and character checks.
+[ ] Basic membership checks such as item in a list.
+[ ] try/except for safe numeric input conversion.
+[ ] A small number of helper functions for input validation and shared
+    calculations.
+
+Not allowed
+
+[ ] Dictionaries.
+[ ] Reading or writing files in the submitted Python product.
+[ ] Regular expressions or the re library.
+[ ] set() or set literals.
+[ ] List comprehensions.
+[ ] Lambda expressions.
+[ ] Classes or object-oriented solutions.
+[ ] Third-party packages.
+[ ] exit() or another shortcut that closes the program from a service.
+[ ] External JSON, CSV, or other datasets.
+[ ] Copying the quote formula three times for Task 9.
+[ ] Using max(), min(), index(), sum(), or statistics libraries for the weekly
+    report calculations.
+
+Design limitations
+
+[ ] Submit harborflow_app.py and readme.txt.
+[ ] Add other Python modules only when the submitted product genuinely uses them.
+[ ] Do not use a global variable merely to pass data between functions.
+[ ] Keep feature logic inside functions; menu branches should dispatch to them.
+[ ] Use console input and exact console output.
+[ ] Preserve the required prompts, capitalization, punctuation, spacing, order,
+    and filenames.
+[ ] Every service must return to the persistent menu.
+[ ] Only menu option 1 may close the console normally.
+[ ] Test normal, boundary, and invalid inputs before submission.
+
+Assignment-wide required constants
+
+Quote calculation:
+  subtotal = 45.00 + distance * 6.50 + weight * 4.00
+  Standard S multiplier = 1.00
+  Express X multiplier = 1.25
+  Priority P multiplier = 1.60
+
+Performance statuses:
+  damaged parcels > 0: SERVICE FAILURE
+  delay <= 0: ON TIME
+  delay <= 15: MINOR DELAY
+  otherwise: MAJOR DELAY
+
+Required validation messages
+
+  Error - Select a service from 1 to 8.
+  Error - Value must be greater than zero.
+  Error - Service code must be S, X or P.
+  Error - Weekly report requires 7 delivery counts.

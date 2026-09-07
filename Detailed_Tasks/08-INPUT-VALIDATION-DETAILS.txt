@@ -1,0 +1,91 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 8: ADD INPUT VALIDATION
+
+Goal
+Make every interactive service safe to use. Invalid input must produce a clear
+error, repeat only the affected prompt, and never crash the console or silently
+replace a value with an unrelated default.
+
+General validation rules
+
+[ ] Use a loop around each individual prompt that may receive invalid input.
+[ ] Catch non-numeric text before numeric conversion can crash the program.
+[ ] Reject values outside the allowed range.
+[ ] Print a concise error message for invalid input.
+[ ] Repeat only the prompt that failed.
+[ ] Preserve values already accepted from other prompts.
+[ ] Return a validated value to the calling service.
+
+Menu validation
+
+[ ] Accept only integer choices from 1 through 8.
+[ ] Reject 0, 9, negative integers, and integers above 8.
+[ ] Reject letters, blank text, and decimal text such as 2.5.
+[ ] Print exactly:
+  Error - Select a service from 1 to 8.
+[ ] Keep asking until a valid menu choice is collected.
+
+Service-specific validation
+
+Booking references:
+[ ] Strip and normalize the value before format validation.
+[ ] Reject values that do not match HFL-CCC-NNNN.
+
+Delivery quotes:
+[ ] Require distance greater than zero.
+[ ] Require weight greater than zero.
+[ ] Require service code S, X, or P, case-insensitively.
+
+Van capacity:
+[ ] Require capacity greater than zero.
+[ ] Require every parcel weight to be numeric and greater than zero.
+[ ] Reject malformed or empty weight items rather than skipping them silently.
+
+Service performance:
+[ ] Require non-negative promised time.
+[ ] Require non-negative actual time.
+[ ] Require non-negative damaged-parcel count.
+
+Weekly report:
+[ ] Require exactly seven daily counts.
+[ ] Require each count to be numeric and non-negative.
+[ ] Require a non-negative daily target.
+[ ] Repeat only the daily count or target prompt containing the error.
+
+Required error messages
+
+[ ] Use exactly "Error - Value must be greater than zero." for invalid positive
+  quote, capacity, and parcel-weight values.
+[ ] Use exactly "Error - Service code must be S, X or P." for an invalid quote
+  service code.
+[ ] Use exactly "Error - Weekly report requires 7 delivery counts." when the
+  weekly list does not contain exactly seven values.
+
+Implementation steps
+
+[ ] Add small reusable input helpers where they reduce repeated validation.
+[ ] Give each helper one clear responsibility.
+[ ] Keep business calculations out of validation helpers.
+[ ] Use the validated return value in the service function.
+[ ] Ensure a validation error does not return to the main menu prematurely.
+
+Testing checklist
+
+[ ] Test every menu boundary and non-integer menu input.
+[ ] Test invalid quote values followed by valid values.
+[ ] Test invalid service codes followed by valid codes.
+[ ] Test invalid capacity and weight values.
+[ ] Test negative performance values.
+[ ] Test fewer than seven weekly counts.
+[ ] Test a negative weekly count and target.
+[ ] Confirm only the affected prompt repeats.
+[ ] Confirm the program remains usable after repeated errors.
+
+Acceptance result
+
+[ ] Menu choices are limited to 1 through 8.
+[ ] Quote, capacity, performance, and weekly inputs are validated.
+[ ] Invalid values do not crash the program.
+[ ] Only the failed prompt repeats.
+[ ] Validated values reach the correct service calculation.
+[ ] Test results are recorded in test-ledger.csv.

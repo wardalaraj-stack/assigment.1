@@ -1,0 +1,4 @@
+
+    print(f"""\n
+    Delay: {Delay} minutes
+    Service status: {status}""")

@@ -1,0 +1,7 @@
+TASK 5: Check van capacity
+
+[ ] Read capacity and parcel weights
+[ ] Process weights from left to right
+[ ] Accept parcels that fit
+[ ] Reject parcels that do not fit and continue
+[ ] Print totals with two decimals

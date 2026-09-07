@@ -1,0 +1,63 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 4: CONSOLIDATE PARCEL LABELS
+
+Goal
+Create a parcel-label service that accepts a comma-separated list of labels,
+normalizes each label, removes duplicates, preserves first-seen order, and
+prints the consolidated list and its total count.
+
+Normalization rules
+
+[ ] Split the input at commas.
+[ ] Strip leading and trailing spaces from every label.
+[ ] Normalize letter case consistently, using uppercase for displayed labels.
+[ ] Ignore empty items created by leading, trailing, or repeated commas.
+[ ] Compare normalized labels so case differences do not create duplicates.
+[ ] Preserve the order in which each unique label first appears.
+
+Implementation steps
+
+[ ] Create a separate consolidate_parcel_labels() function.
+[ ] Read one comma-separated input string.
+[ ] Split the string into individual labels.
+[ ] Normalize each label before checking for duplicates.
+[ ] Use a list and membership checks for duplicate detection.
+[ ] Do not use set().
+[ ] Use a list to preserve first-seen output order.
+[ ] Print each unique label with a number starting at 1.
+[ ] Print the total number of unique labels.
+[ ] Return to the main menu after the result is printed.
+
+Example
+
+Input:
+  box-1, BOX-2, box-1, envelope-3, BOX-2
+
+Output:
+  1. BOX-1
+  2. BOX-2
+  3. ENVELOPE-3
+  Total labels: 3
+
+The output must contain each normalized label once. Do not sort the labels
+alphabetically because first-seen order is part of the requirement.
+
+Testing checklist
+
+[ ] Test several unique labels.
+[ ] Test exact duplicate labels.
+[ ] Test duplicates that differ only by case.
+[ ] Test labels with spaces around commas.
+[ ] Test repeated commas and empty input items.
+[ ] Confirm the first-seen order is preserved.
+[ ] Confirm numbering starts at 1 and has no gaps.
+[ ] Confirm the total equals the number of printed labels.
+
+Acceptance result
+
+[ ] Labels are split at commas and normalized.
+[ ] Duplicate labels are removed case-insensitively.
+[ ] First-seen order is preserved.
+[ ] Labels are numbered and the total is printed.
+[ ] The service returns to the persistent menu.
+[ ] Test results are recorded in test-ledger.csv.

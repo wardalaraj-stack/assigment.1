@@ -1,0 +1,8 @@
+TASK 8: Input validation
+
+[ ] Validate menu choices from 1 to 8
+[ ] Reject invalid quote values and service codes
+[ ] Reject invalid capacity values and weights
+[ ] Reject negative performance values
+[ ] Require seven non-negative weekly counts
+[ ] Repeat only the affected prompt after an error

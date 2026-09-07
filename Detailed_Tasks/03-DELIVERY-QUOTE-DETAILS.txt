@@ -1,0 +1,70 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 3: CALCULATE DELIVERY QUOTES
+
+Goal
+Create a delivery-quote service that reads route distance, parcel weight, and
+service code, calculates the matching price, and prints one quote with exactly
+two decimal places. The service must return to the main menu after it finishes.
+
+Inputs
+
+[ ] Read the delivery distance in kilometres.
+[ ] Read the parcel weight in kilograms.
+[ ] Read a service code.
+[ ] Accept service codes case-insensitively after stripping spaces.
+[ ] Use positive numeric values for distance and weight.
+
+Service codes and pricing
+Use these three service codes and multipliers consistently in the quote service
+and the service-comparison service:
+
+- S (Standard): multiplier 1.00.
+- X (Express): multiplier 1.25.
+- P (Priority): multiplier 1.60.
+
+First calculate:
+  subtotal = 45.00 + (distance * 6.50) + (weight * 4.00)
+
+Then calculate:
+  quote = subtotal * service multiplier
+
+Implementation steps
+
+[ ] Create one reusable calculate_quote(distance, weight, service_code) function.
+[ ] Normalize the service code before comparing it.
+[ ] Select the correct multiplier for S, X, or P.
+[ ] Use the fixed base charge, distance rate, and weight rate.
+[ ] Calculate the price without rounding intermediate values.
+[ ] Return the numeric price from the reusable calculation function.
+[ ] Create a separate calculate_delivery_quote() input/output function.
+[ ] Print the selected service and price with two decimal places.
+[ ] Keep input handling separate from the calculation formula.
+
+Suggested output
+
+Print a clear result in this form:
+  Service: Standard
+  Delivery quote: 197.81 SEK
+
+The currency symbol and two decimal places must appear consistently. Invalid
+inputs must be handled by Task 8's validation rules rather than crashing.
+
+Testing checklist
+
+[ ] Test each of S, X, and P.
+[ ] Test decimal distance and weight values.
+[ ] Test zero and negative distance and weight values and confirm rejection.
+[ ] Test service codes in lowercase and with surrounding spaces.
+[ ] Confirm the quote is printed with exactly two decimal places.
+[ ] Confirm an unknown service code is rejected.
+[ ] Confirm zero and negative distance and weight values are rejected.
+[ ] Confirm the function returns to the main menu afterward.
+
+Acceptance result
+
+[ ] Distance, weight, and service code are collected.
+[ ] The correct formula is used for every supported service.
+[ ] A reusable quote calculation function exists.
+[ ] The displayed price has exactly two decimal places.
+[ ] Invalid values do not crash the program.
+[ ] Test results are recorded in test-ledger.csv.

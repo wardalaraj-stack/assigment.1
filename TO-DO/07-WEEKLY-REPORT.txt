@@ -1,0 +1,7 @@
+TASK 7: Weekly dispatch report
+
+[ ] Read seven daily delivery counts
+[ ] Read the daily target
+[ ] Calculate total and average
+[ ] Find the last tied highest and lowest day
+[ ] Count days meeting the target

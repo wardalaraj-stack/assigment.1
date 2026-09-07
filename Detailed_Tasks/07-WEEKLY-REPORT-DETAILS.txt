@@ -1,0 +1,72 @@
+HARBORFLOW DISPATCH CONSOLE
+TASK 7: PRODUCE THE WEEKLY DISPATCH REPORT
+
+Goal
+Create a weekly-report service that reads seven daily delivery counts and a
+daily target, calculates weekly totals and averages, identifies the last tied
+highest and lowest days, and counts target-meeting days.
+
+Inputs
+
+[ ] Read one comma-separated input containing exactly seven daily delivery counts
+  in Monday-to-Sunday order.
+[ ] Read one daily delivery target.
+[ ] Accept zero as a valid count and target.
+[ ] Reject negative counts and negative targets.
+[ ] Reject input containing fewer or more than seven delivery counts.
+[ ] Keep the day names paired with their original input positions.
+
+Calculations
+
+[ ] Calculate total deliveries with an accumulator while traversing the list.
+[ ] Calculate average deliveries as total divided by 7.
+[ ] Find the highest daily count without using max().
+[ ] Find the lowest daily count without using min().
+[ ] Report the last day with the highest count when there is a tie.
+[ ] Report the last day with the lowest count when there is a tie.
+[ ] Count every day whose deliveries are greater than or equal to the target.
+[ ] Do not use sum(), index(), or a statistics library.
+[ ] Print the average with two decimal places.
+
+Tie handling
+To find the last tied day, scan the days from Monday to Sunday and replace the
+stored day whenever the current value is equal to or beyond the current
+extreme. Do not stop at the first maximum or minimum.
+
+Suggested report
+
+  Total deliveries: 123
+  Average per day: 17.57
+  Highest day: Sunday (25)
+  Lowest day: Tuesday (4)
+  Days meeting target: 5
+
+Implementation steps
+
+[ ] Create a separate produce_weekly_report() function.
+[ ] Collect seven validated counts.
+[ ] Collect the validated daily target.
+[ ] Store counts in a seven-item list.
+[ ] Use one-based or named day labels consistently in output.
+[ ] Calculate and print every required report value.
+[ ] Return to the main menu after the report is printed.
+
+Testing checklist
+
+[ ] Test seven different counts.
+[ ] Test all counts equal.
+[ ] Test a tie for the highest value and confirm the later day is reported.
+[ ] Test a tie for the lowest value and confirm the later day is reported.
+[ ] Test a target of zero.
+[ ] Test a target higher than every daily count.
+[ ] Test counts containing zero.
+[ ] Test negative values and confirm only the affected prompt repeats.
+
+Acceptance result
+
+[ ] Seven daily counts and one target are collected.
+[ ] Total and two-decimal average are correct.
+[ ] Last tied highest and lowest days are reported.
+[ ] Days meeting or exceeding the target are counted.
+[ ] Invalid negative values are rejected safely.
+[ ] Test results are recorded in test-ledger.csv.

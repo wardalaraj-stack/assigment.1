@@ -1,0 +1,12 @@
+[ ] Build the main menu
+[ ] Validate booking references
+[ ] Calculate delivery quotes
+[ ] Consolidate parcel labels
+[ ] Check van capacity
+[ ] Classify service performance
+[ ] Produce the weekly report
+[ ] Add input validation
+[ ] Add service comparison
+[ ] Test normal, boundary, and invalid inputs
+[ ] Complete readme.txt
+[ ] Check files before submission
