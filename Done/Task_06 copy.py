@@ -9,7 +9,7 @@
 [06.7 ] Reject negative values for all three inputs.
 """
 
-def _read_positive_number(prompt):
+def read_positive_number(prompt):
 #05.2
     """Read and return a positive floating-point number."""
     while True:
@@ -21,76 +21,34 @@ def _read_positive_number(prompt):
             pass
         print("Please enter a positive number.")
 
-        
+#Task_06 starts here#-------------------------------------------------------
+def read_not_negative_number(prompt):
+#05.2
+    """Read and return a not negative floating-point number."""
+    while True:
+        try:
+            value = float(input(prompt).strip())
+            if value >= 0:
+                return value
+        except ValueError:
+            pass
+        print("Please enter a valid number. 0 or bigger")        
     
-# It checks the delivery performance and gives a service status.
 def classify_service_performance():
+# It checks the delivery performance and gives a service status.
 
     #06.1 Keep asking for the promised delivery time until valid input is entered.
-    while True: 
+    # Ask the user for the promised delivery time.
+    promised = read_positive_number("Enter promised delivery time in minutes: ")
 
-        # Try to convert the user's input into a number.
-        try:
-            # Ask the user for the promised delivery time.
-            promised = float(input("Enter promised delivery time in minutes: "))
-
-            # Check if the number is negative.
-            if promised < 0:
-                # Show an error if the number is negative.
-                print("Error - Value cannot be negative.")
-
-            # If the number is valid, leave the loop.
-            else:
-                break
-
-        # This runs if the user enters something that is not a number.
-        except ValueError:
-            # Tell the user to enter a number.
-            print("Error - Please enter a number.")
-
+            
     #06.2 Keep asking for the actual delivery time until valid input is entered.
-    while True:
-
-        # Try to convert the user's input into a number.
-        try:
-            # Ask the user for the actual delivery time.
-            actual = float(input("Enter actual delivery time in minutes: "))
-
-            # Check if the number is negative.
-            if actual < 0:
-                # Show an error if the number is negative.
-                print("Error - Value cannot be negative.")
-
-            # If the number is valid, leave the loop.
-            else:
-                break
-
-        # This runs if the user enters something that is not a number.
-        except ValueError:
-            # Tell the user to enter a number.
-            print("Error - Please enter a number.")
-
-    #06.3 Keep asking for the number of damaged parcels until valid input is entered.
-    while True:
-
-        # Try to convert the input into a whole number.
-        try:
-            # Ask the user how many parcels were damaged.
-            damaged = int(input("Enter number of damaged parcels: "))
-
-            #06.7 Check if the number is negative.
-            if damaged < 0:
-                # Show an error if the number is negative.
-                print("Error - Value cannot be negative.")
-
-            # If the number is valid, leave the loop.
-            else:
-                break
-
-        # This runs if the user does not enter a whole number.
-        except ValueError:
-            # Tell the user to enter a whole number.
-            print("Error - Please enter a whole number.")
+    # Ask the user for the actual delivery time.
+    actual = read_positive_number("Enter actual delivery time in minutes: ")
+    
+    
+    # Ask the user how many parcels were damaged.
+    damaged = read_not_negative_number("Enter number of damaged parcels: ")
 
     # Calculate the delay.
     #06.4 Actual time minus promised time gives the signed delay.
@@ -129,7 +87,7 @@ def classify_service_performance():
     print(f"""
     Delay: {delay} minutes
     Service status: {status}""")
-
+#Task_06 ends here#---------------------------------------------------------
 
 def main():
     while True:

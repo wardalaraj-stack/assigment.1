@@ -90,11 +90,29 @@ def validate_booking_reference():
         
         if prefix_ok and code_ok and number_ok:
             is_valid = True
+        else: 
+            print(f"""
+        Invalid booking reference.
+        Expected format: HFL-XXX-YYYY
+            
+        1. Validate again 
+        2. Exit
+                """)
+        
+            servise = input("Select an option: ").strip()
+            if servise == "1":
+                    validate_booking_reference()
+            elif servise == "2":
+                    print("Goodbye.")
+                    main()
 
     if is_valid:
         print(f"\nBooking reference: {normalized}")
         print("Valid booking reference.")
         print("Returning to main menu...")
+        print()
+        
+        #print_menu()
     else:
         print(f"""
 Invalid booking reference.
@@ -112,8 +130,9 @@ Expected format: HFL-XXX-YYYY
             main()
 #Task_02 ends here#-------------------------------------------------------------------------------------
 
+
 #task 3 starts here#-------------------------------------------------------------------------------------
-def read_positive_number(prompt):       #this will be importamt for task 9
+def read_positive_number(prompt):       #this will be importamt for task 5-9
 # ---------------------------------------------------------------------------
 # read_positive_number(prompt)
 #
@@ -223,6 +242,7 @@ def calculate_delivery_quote():
     print(f"{'Delivery quote':.<20}: {format(price, '.2f')} SEK")
 #task 3 ends here#-------------------------------------------------------------------------------------
 
+
 #Task 4 starts here#-------------------------------------------------------------------------------------
 def consolidate_parcel_labels():
     raw_input = input("Enter parcel labels separated by commas: ")
@@ -262,28 +282,331 @@ def consolidate_parcel_labels():
     print("Returning to main menu...\\n")
 #Task 4 ends here#-------------------------------------------------------------------------------------
 
+
+#Task_05 Starts here#------------------------------------------
 def check_van_capacity():
-	# This function will decide which parcels fit in the van in Task 5.
-	# pass temporarily keeps the menu runnable until Task 5 is implemented.
-	pass
+#05.1 - 05.10
+    """Check van capacity against a list of parcel weights."""
+    """Process parcel weights from left to right and print the result."""
+    capacity = _read_positive_number("Capacity (kg): ")
+
+    while True:
+    #05.1 - 05.3 - 
+        raw_weights = input("Parcel weights (kg, comma-separated): ")
+        parts = [part.strip() for part in raw_weights.split(",")]
+        #parts is a list of strings, each representing a weight, with spaces stripped
+        try:
+            weights = [float(part) for part in parts]
+            if weights and all(weight > 0 for weight in weights):
+            # if and all() ensure that the list is not empty and all weights are positive
+                break
+                #continue to the next step if all weights are valid
+        except ValueError:
+            pass
+        print("ERROR!")
+        print(f"Please enter one or more positive weights separated by commas.")
+        print("")
+
+    remaining = capacity
+    accepted = []
+    rejected = []
+
+    print("\nProcessing result:")
+    #\n means a new line before printing the result
+    for position, weight in enumerate(weights, start=1):
+    #enumerate() gives us both the index (position) and the weight value, starting at 1
+        if weight <= remaining:
+            accepted.append(weight)
+            remaining -= weight
+            print(
+                f"- {weight:.2f} kg accepted; remaining capacity is {remaining:.2f} kg."
+                #.2f formats the number to two decimal places
+                
+            )
+        else:
+            rejected.append((position, weight))
+            print(f"- {weight:.2f} kg rejected; it does not fit.")
+
+    loaded = sum(accepted)
+    print(f"""\nFinal totals:
+    Accepted parcels: {len(accepted)}
+    Loaded weight: {loaded:.2f} kg
+    Remaining capacity: {remaining:.2f} kg""")
+
+    return {
+        #05.10 - return a dictionary with the results
+        "accepted": accepted,
+        "rejected": rejected,
+        "loaded_weight": loaded,
+        "remaining_capacity": remaining,
+    }
+#Task_05 ends here#--------------------------------------------
 
 
+#Task_06 starts here#-------------------------------------------------------
+def read_not_negative_number(prompt):
+#05.2
+    """Read and return a not negative floating-point number."""
+    while True:
+        try:
+            value = float(input(prompt).strip())
+            if value >= 0:
+                return value
+        except ValueError:
+            pass
+        print("Please enter a valid number. 0 or bigger")        
+    
 def classify_service_performance():
-	# This function will classify a route's delivery performance in Task 6.
-	# pass temporarily keeps the menu runnable until Task 6 is implemented.
-	pass
+# It checks the delivery performance and gives a service status.
 
+    #06.1 Keep asking for the promised delivery time until valid input is entered.
+    # Ask the user for the promised delivery time.
+    promised = read_positive_number("Enter promised delivery time in minutes: ")
 
+            
+    #06.2 Keep asking for the actual delivery time until valid input is entered.
+    # Ask the user for the actual delivery time.
+    actual = read_positive_number("Enter actual delivery time in minutes: ")
+    
+    
+    # Ask the user how many parcels were damaged.
+    damaged = read_not_negative_number("Enter number of damaged parcels: ")
+
+    # Calculate the delay.
+    #06.4 Actual time minus promised time gives the signed delay.
+    delay = actual - promised
+
+    #06.5 Check damaged parcels first.
+    # Damage has priority over the delivery time.
+    if damaged > 0:
+
+        # If there is at least one damaged parcel,
+        # the service has failed.
+        status = "SERVICE FAILURE"
+
+    # If there are no damaged parcels,
+    #06.6 check whether the delivery was early or on time.
+    elif delay <= 0:
+
+        # A negative delay means early.
+        # A zero delay means exactly on time.
+        status = "ON TIME"
+
+    # If the delay is between 1 and 15 minutes,
+    # classify it as a minor delay.
+    elif delay <= 15:
+
+        # 15 minutes is included in MINOR DELAY.
+        status = "MINOR DELAY"
+
+    # If none of the conditions above are true,
+    # the delay is greater than 15 minutes.
+    else:
+
+        # Classify the delivery as a major delay.
+        status = "MAJOR DELAY"
+
+    print(f"""
+    Delay: {delay} minutes
+    Service status: {status}""")
+#Task_06 ends here#---------------------------------------------------------
+
+#Task_07 starts here#-------------------------------------------------
 def produce_weekly_report():
-	# This function will calculate the weekly delivery report in Task 7.
-	# pass temporarily keeps the menu runnable until Task 7 is implemented.
-	pass
+# This function creates the weekly dispatch report.
+
+    # Store the names of the seven days in order.
+    days = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+
+    # Keep asking for the daily delivery counts until valid input is entered.
+    while True:
+
+        # Get all seven delivery counts in one input.
+        counts_input = input(
+            "Enter seven daily delivery counts (Monday-Sunday), separated by commas: "
+        )
+
+        # Split the input at each comma. and stripi them from whitespacse 
+        parts = counts_input.strip().split(",")
+
+        # Check that exactly seven values were entered.
+        if len(parts) != 7:
+            print("Error - Weekly report requires 7 delivery counts.")
+            continue
+
+        # Create an empty list to store the seven counts.
+        counts = []
+
+        # Assume the input is valid.
+        valid = True
+
+        # Go through each value that the user entered.
+        for part in parts:
+
+            # Remove spaces around the value.
+            part = part.strip()
+
+            # Try to convert the value to an integer.
+            try:
+                count = int(part)
+
+                # Check if the count is negative.
+                if count < 0:
+                    print("Error - Value cannot be negative.")
+                    valid = False
+                    break
+
+                # Add the valid count to the list.
+                counts.append(count)
+
+            # This runs if the value is not a whole number.
+            except ValueError:
+                print("Error - Please enter whole numbers.")
+                valid = False
+                break
+
+        # If an invalid value was found, ask for the counts again.
+        if not valid:
+            continue
+
+        # If all seven counts are valid, leave the input loop.
+        break
+
+    # Keep asking for the daily target until a valid target is entered.
+    while True:
+
+        # Ask the user for the daily delivery target.
+        target_input = input("Enter daily delivery target: ")
+        #consider target_input = int(input("Enter daily delivery target: "))
+
+        # Try to convert the target into an integer.
+        try:
+            target = int(target_input)
+
+            # Check if the target is negative.
+            if target < 0:
+                print("Error - Value cannot be negative.")
+
+            # Zero and positive numbers are valid.
+            else:
+                break
+                # Break means the input is valid, so leave the loop.
+
+        # This runs if the user does not enter a whole number.
+        except ValueError:
+            print("Error - Please enter a whole number.")
+
+    # Start the total at zero.
+    total = 0
+
+    # Add each daily count to the total.
+    for count in counts:
+        total = total + count
+
+    # Calculate the average by dividing the total by seven.
+    average = total / 7
+
+    # Start with Monday as the highest day.
+    highest = counts[0]
+    highest_day = days[0]
+
+    # Start with Monday as the lowest day.
+    lowest = counts[0]
+    lowest_day = days[0]
+
+    # Go through all seven days.
+    for i in range(7):
+        #ra
+
+        # Get the current day's delivery count.
+        current_count = counts[i]
+
+        # Check if this count is greater than OR equal to
+        # the current highest count.
+        # Using >= means the later tied day replaces the earlier day.
+        if current_count >= highest:
+            highest = current_count
+            highest_day = days[i]
+
+        # Check if this count is less than OR equal to
+        # the current lowest count.
+        # Using <= means the later tied day replaces the earlier day.
+        if current_count <= lowest:
+            lowest = current_count
+            lowest_day = days[i]
+
+    # Start the target-meeting day counter at zero.
+    days_meeting_target = 0
+
+    # Check each daily delivery count.
+    for count in counts:
+
+        # A day meets the target when deliveries are
+        # greater than or equal to the target.
+        if count >= target:
+            days_meeting_target += days_meeting_target
 
 
+    print(f"""
+{'Total deliveries ':.<21}: {total}
+{'Average per day ':.<21}: {average:.2f}
+{'Highest day ':.<21}: {highest_day}
+{'Lowest day ':.<21}: {lowest_day}
+{'Days meeting target ':.<21}: {days_meeting_target}
+""")
+#Task_07 ends here#---------------------------------------------------
+
+
+#Task_09 starts here#----------------------------------------------
 def compare_service_scenarios():
-	# This function will compare Standard, Express, and Priority in Task 9.
-	# pass temporarily keeps the menu runnable until Task 9 is implemented.
-	pass
+    # Read one positive distance using the shared Task 8 validation helper.
+    distance = read_positive_number("Enter Distance in (km): ")
+    # Read one positive parcel weight using the same shared helper.
+    weight = read_positive_number("Enter Weight in (kg): ")
+
+    # Reuse the Task 3 calculation once for each service code.
+    standard_price = calculate_quote(distance, weight, "S")
+    express_price = calculate_quote(distance, weight, "X")
+    priority_price = calculate_quote(distance, weight, "P")
+
+    # Store names and prices in the required display order.
+    services = [("Standard", standard_price),
+                ("Express", express_price),
+                ("Priority", priority_price)]
+
+    # Print every service price with exactly two decimal places.
+    print("\nService comparison:\n")
+    for service_name, price in services:
+        print(f"{service_name:.<25}: {price:>08.2f} SEK")
+        # implemented :>08.2f for right-aligning the price 
+        #in a field of 8 characters, with leading zeros and two decimal places. from laps 3 
+
+    # Start both comparisons with Standard so ties keep the first service.
+    cheapest_name, cheapest_price = services[0]
+    most_expensive_name, most_expensive_price = services[0]
+
+    # Compare the remaining services without changing the order of ties.
+    for service_name, price in services[1:]:
+        #we start with [1:] because we already initialized the cheapest and most expensive with the first service
+        if price < cheapest_price:
+            cheapest_name = service_name
+            cheapest_price = price
+        if price > most_expensive_price:
+            most_expensive_name = service_name
+            most_expensive_price = price
+
+    # Print the cheapest and most expensive service names.
+    print(f"\n{'Cheapest service':.<25}: {cheapest_name:>07} SEK")
+    print(f"{'Most expensive service':.<25}: {most_expensive_name:>07} SEK")
+#Task_09 ends here#------------------------------------------------
 
 
 if __name__ == "__main__":
