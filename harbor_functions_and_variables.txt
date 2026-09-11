@@ -1,0 +1,94 @@
+HARBORFLOW FUNCTIONS AND VARIABLES
+===================================
+
+Source: harborflow_app_TEST_WARD.py
+
+Functions:
+- print_menu — function: displays the main HarborFlow service menu.
+- read_menu_choice — function: reads and validates a menu choice from 1 to 8.
+- main — function: runs the main dispatch console loop.
+- validate_booking_reference — function: validates a booking reference and offers retry or exit.
+- read_positive_number — function: repeatedly reads a number greater than zero.
+- read_service_code — function: reads and validates S, X, or P service codes.
+- service_name — function: maps a service code to its display name.
+- calculate_quote — function: calculates a delivery quote.
+- calculate_delivery_quote — function: collects quote details and prints the result.
+- consolidate_parcel_labels — function: normalizes and removes duplicate parcel labels.
+- check_van_capacity — function: accepts or rejects parcels against remaining capacity.
+- read_not_negative_number — function: reads a number that may be zero but not negative.
+- classify_service_performance — function: assigns a delivery performance status.
+- produce_weekly_report — function: calculates and prints weekly delivery statistics.
+- compare_service_scenarios — function: compares Standard, Express, and Priority prices.
+
+Parameters:
+- prompt — parameter: text shown for an input request.
+- service_code — parameter: service code being interpreted or priced.
+- distance — parameter: delivery distance used in pricing.
+- weight — parameter: parcel weight used in pricing.
+
+Variables:
+- userchoice — variable: integer selected from the main menu.
+- console_active — variable: controls the main menu loop.
+- choice — variable: selected menu option.
+- reference — variable: raw booking reference input.
+- normalized — variable: cleaned and uppercased booking reference.
+- parts — variable: pieces of a booking reference or parcel weights.
+- is_valid — variable: booking reference validity flag.
+- prefix — variable: booking reference prefix.
+- code — variable: booking or service code text.
+- number — variable: numeric booking reference part.
+- prefix_ok — variable: booking prefix validation result.
+- code_ok — variable: booking code validation result.
+- number_ok — variable: booking number validation result.
+- servise — variable: retry or exit option entered after invalid booking input.
+- raw_value — variable: raw numeric input text.
+- value — variable: converted numeric value.
+- raw_code — variable: raw service code input.
+- name — variable: display name for a service code.
+- multiplier — variable: service pricing multiplier.
+- subtotal — variable: quote amount before the service multiplier.
+- quote — variable: calculated quote amount.
+- distance — variable: delivery distance.
+- weight — variable: parcel weight.
+- service_code — variable: selected delivery service code.
+- price — variable: formatted delivery quote.
+- raw_input — variable: comma-separated parcel label input.
+- label_parts — variable: labels produced by splitting raw input.
+- unique_labels — variable: normalized labels retained in first-seen order.
+- cleaned — variable: trimmed and uppercased label.
+- capacity — variable: van capacity entered by the user.
+- raw_weights — variable: raw comma-separated parcel weights.
+- weights — variable: validated parcel weights.
+- remaining — variable: van capacity still available.
+- accepted — variable: parcel weights accepted into the van.
+- rejected — variable: parcel positions and weights that do not fit.
+- loaded — variable: total weight of accepted parcels.
+- promised — variable: promised delivery time.
+- actual — variable: actual delivery time.
+- damaged — variable: number of damaged parcels.
+- delay — variable: actual time minus promised time.
+- status — variable: resulting service performance classification.
+- days — variable: ordered names of the week days.
+- counts_input — variable: raw weekly delivery count input.
+- counts — variable: validated daily delivery counts.
+- valid — variable: flag showing whether weekly input is valid.
+- target_input — variable: raw daily delivery target input.
+- target — variable: daily delivery target.
+- total — variable: total deliveries across the week.
+- average — variable: average daily delivery count.
+- highest — variable: highest daily delivery count.
+- highest_day — variable: last day with the highest count.
+- lowest — variable: lowest daily delivery count.
+- lowest_day — variable: last day with the lowest count.
+- current_count — variable: count currently being compared in the weekly report.
+- days_meeting_target — variable: number of days meeting the target.
+- standard_price — variable: calculated Standard service price.
+- express_price — variable: calculated Express service price.
+- priority_price — variable: calculated Priority service price.
+- services — variable: ordered service names and prices.
+- cheapest_name — variable: name of the cheapest service.
+- cheapest_price — variable: price of the cheapest service.
+- most_expensive_name — variable: name of the most expensive service.
+- most_expensive_price — variable: price of the most expensive service.
+- part — variable: one input item while parsing a list.
+- count — variable: one converted daily delivery count.

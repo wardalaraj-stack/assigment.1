@@ -1,7 +1,7 @@
 """HarborFlow Assignment 1 starter file."""
 
 
-#Task_011 starts#-------------------------------------------------------------------------------------
+#Task_01 starts#-------------------------------------------------------------------------------------
 def print_menu():
 # Display all services that the dispatcher can select.
 	print("""HARBORFLOW DISPATCH CONSOLE
@@ -91,43 +91,40 @@ def validate_booking_reference():
         if prefix_ok and code_ok and number_ok:
             is_valid = True
         else: 
-            print(f"""
-        Invalid booking reference.
-        Expected format: HFL-XXX-YYYY
-            
-        1. Validate again 
-        2. Exit
-                """)
-        
-            servise = input("Select an option: ").strip()
-            if servise == "1":
-                    validate_booking_reference()
-            elif servise == "2":
-                    print("Goodbye.")
-                    main()
+            invalid_booking_refrence()     
 
-    if is_valid:
-        print(f"\nBooking reference: {normalized}")
-        print("Valid booking reference.")
-        print("Returning to main menu...")
-        print()
+        if is_valid:
+            print(f"\nBooking reference: {normalized}")
+            print("Valid booking reference.")
+            print("Returning to main menu...")
+            print()
         
         #print_menu()
     else:
-        print(f"""
+        print("no")
+        invalid_booking_refrence()
+
+def invalid_booking_refrence():
+    
+        print(f"""  
 Invalid booking reference.
 Expected format: HFL-XXX-YYYY
     
 1. Validate again 
 2. Exit
         """)
-
-        servise = input("Select an option: ").strip()
-        if servise == "1":
-            validate_booking_reference()
-        elif servise == "2":
-            print("Goodbye.")
-            main()
+        while True:    
+            servise = read_positive_number("Select an option: ")
+            if servise == 1:
+                validate_booking_reference()
+                break
+                
+            elif servise == 2:
+                print("Goodbye.")
+                break
+            else:
+                print("Invalid choice! please select 1 or 2 ")
+                invalid_booking_refrence()
 #Task_02 ends here#-------------------------------------------------------------------------------------
 
 
@@ -156,7 +153,7 @@ def read_positive_number(prompt):       #this will be importamt for task 5-9
 # ---------------------------------------------------------------------------
 
     while True:
-        raw_value = input(prompt)
+        raw_value = input(prompt).strip()
         #prompt is the temporary name for whatever the input is called 
 
         try:
@@ -288,7 +285,7 @@ def check_van_capacity():
 #05.1 - 05.10
     """Check van capacity against a list of parcel weights."""
     """Process parcel weights from left to right and print the result."""
-    capacity = _read_positive_number("Capacity (kg): ")
+    capacity = read_positive_number("Capacity (kg): ")
 
     while True:
     #05.1 - 05.3 - 
