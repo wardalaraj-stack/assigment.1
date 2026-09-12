@@ -276,7 +276,8 @@ def consolidate_parcel_labels():
     # Print the total number of unique labels.
     print(f"Total labels: {len(unique_labels)}\n")
 
-    print("Returning to main menu...\\n")
+    print("Returning to main menu...")
+    print()
 #Task 4 ends here#-------------------------------------------------------------------------------------
 
 
@@ -346,12 +347,12 @@ def read_not_negative_number(prompt):
     """Read and return a not negative floating-point number."""
     while True:
         try:
-            value = float(input(prompt).strip())
+            value = int(input(prompt).strip())
             if value >= 0:
                 return value
         except ValueError:
             pass
-        print("Please enter a valid number. 0 or bigger")        
+        print("Please enter a valid number. 0 or higher")        
     
 def classify_service_performance():
 # It checks the delivery performance and gives a service status.
@@ -367,7 +368,7 @@ def classify_service_performance():
     
     
     # Ask the user how many parcels were damaged.
-    damaged = read_not_negative_number("Enter number of damaged parcels: ")
+    damaged = int(read_not_negative_number("Enter number of damaged parcels: "))
 
     # Calculate the delay.
     #06.4 Actual time minus promised time gives the signed delay.
@@ -404,8 +405,11 @@ def classify_service_performance():
         status = "MAJOR DELAY"
 
     print(f"""
-    Delay: {delay} minutes
-    Service status: {status}""")
+{'Delay':.<17}: {delay} minutes
+{'Service status':.<17}: {status}
+
+Returning to Dispatch Console...
+""")
 #Task_06 ends here#---------------------------------------------------------
 
 #Task_07 starts here#-------------------------------------------------
@@ -601,8 +605,9 @@ def compare_service_scenarios():
             most_expensive_price = price
 
     # Print the cheapest and most expensive service names.
-    print(f"\n{'Cheapest service':.<25}: {cheapest_name:>07} SEK")
-    print(f"{'Most expensive service':.<25}: {most_expensive_name:>07} SEK")
+    print(f"\n{'Cheapest service':.<25}: {cheapest_name:>7} SEK")
+    print(f"{'Most expensive service':.<25}: {most_expensive_name:>7} SEK")
+    print()
 #Task_09 ends here#------------------------------------------------
 
 
