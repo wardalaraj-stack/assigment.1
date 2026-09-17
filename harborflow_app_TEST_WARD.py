@@ -368,7 +368,7 @@ def classify_service_performance():
     
     
     # Ask the user how many parcels were damaged.
-    damaged = int(read_not_negative_number("Enter number of damaged parcels: "))
+    damaged = read_not_negative_number("Enter number of damaged parcels: ")
 
     # Calculate the delay.
     #06.4 Actual time minus promised time gives the signed delay.
