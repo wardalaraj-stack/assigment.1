@@ -7,7 +7,7 @@ Python version tested:
 
 Team members and concrete contributions
 ---------------------------------------
-Name:
+Name: Raydel
 Contribution:
 
 Name:
