@@ -344,6 +344,53 @@ def check_van_capacity():
     
   #Task_05 endshere#----------------------------------------------
 
+  # ---------- Task 6: Classify service performance ----------
+
+def read_not_negative_number(prompt):
+    """Repeatedly read a number that may be zero but not negative."""
+    # Keep asking until a valid value is entered; return exits the loop.
+    while True:
+        try:
+            # input() returns text, so convert it to a whole number.
+            value = int(input(prompt))
+        except ValueError:
+            # The text could not be converted (e.g. "abc"), so ask again.
+            print("Error - Please enter a whole number.")
+            continue
+        if value < 0:
+            # Negative values are invalid for minutes and parcel counts.
+            print("Error - Value cannot be negative.")
+        else:
+            # Valid value: hand it back to the caller.
+            return value
+
+
+def classify_service_performance():
+    """Read route data, calculate delay and print the service status."""
+    # Collect the three route values, each validated by the helper.
+    promised = read_not_negative_number("Promised minutes: ")
+    actual = read_not_negative_number("Actual minutes: ")
+    damaged = read_not_negative_number("Damaged parcels: ")
+
+    # Positive delay means late; zero or negative means on time or early.
+    delay = actual - promised
+
+    # Apply the decision table in order. Damage is checked first
+    # because it overrides timing, even for early arrivals.
+    if damaged > 0:
+        status = "SERVICE FAILURE"
+    elif delay <= 0:
+        status = "ON TIME"
+    elif delay <= 15:
+        status = "MINOR DELAY"
+    else:
+        status = "MAJOR DELAY"
+
+    print(f"Delay: {delay} minutes")
+    print(f"Service status: {status}")
+
+#Task_06 endshere#----------------------------------------------
+
 #Task_09 starts here#----------------------------------------------
 def compare_service_scenarios():
     # Read one positive distance using the shared Task 8 validation helper.
