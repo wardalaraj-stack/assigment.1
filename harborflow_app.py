@@ -64,12 +64,14 @@ def read_menu_choice():
 		print("Error - Select a service from 1 to 8.")
 
 
+
+
 def validate_booking_reference():
 	# This function will validate a HarborFlow booking reference in Task 2.
 	
     reference = input("Enter booking reference: ")
     normalized = reference.strip().upper()
-    #strip() removes thr white space from before and after the refrense only
+    #strip() removes the white space from before and after the refrense only
 
     parts = normalized.split("-")
     #.splits the refrense at the "-" and removes it 
@@ -100,6 +102,10 @@ def validate_booking_reference():
     else:
         print("Invalid booking reference.")
 		
+
+
+
+
 
 def read_positive_number(prompt):
 # ---------------------------------------------------------------------------
