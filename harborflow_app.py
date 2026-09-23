@@ -1,6 +1,98 @@
 """HarborFlow Assignment 1 starter file."""
 
+#task 1 starts here#-------------------------------------------------------------------------------------
 
+def print_menu():
+	# Display all services that the dispatcher can select.
+	# Each print statement creates one exact line of the required menu.
+	print("HARBORFLOW DISPATCH CONSOLE")
+	print("1. Close console")
+	print("2. Validate booking reference")
+	print("3. Calculate delivery quote")
+	print("4. Consolidate parcel labels")
+	print("5. Check van capacity")
+	print("6. Classify service performance")
+	print("7. Produce weekly dispatch report")
+	print("8. Compare service scenarios")
+
+
+def main():
+	# Keep the console open and send each menu choice to the correct function.
+	# True means the menu should continue appearing; False ends the program. (related to task 1.2.a)
+	console_active = True
+
+	while console_active:
+		# Show the menu and collect one valid choice on every loop iteration.
+		print_menu()
+	
+		choice = read_menu_choice()
+
+		# Option 1 changes the loop state so the while loop can finish.
+		if choice == 1:
+			print("Console closed. Dispatch data remains safe.")
+			console_active = False
+		# Each other option calls a separate function for that service.
+		elif choice == 2:
+			validate_booking_reference()
+		elif choice == 3:
+			calculate_delivery_quote()
+		elif choice == 4:
+			consolidate_parcel_labels()
+		elif choice == 5:
+			check_van_capacity()
+		elif choice == 6:
+			classify_service_performance()
+		elif choice == 7:
+			produce_weekly_report()
+		elif choice == 8:
+			compare_service_scenarios()
+
+
+
+def read_menu_choice():
+	# Keep asking until the user enters an integer from 1 through 8.
+	while True:
+		try:
+			# int() converts text such as "3" into the number 3.
+			userchoice = int(input("Select service: "))
+			# The valid range check prevents unknown menu options.
+			if 1 <= userchoice <= 8:
+				# return sends the valid choice back to main().
+				return userchoice
+		except ValueError:
+			# Non-numeric input causes ValueError, so the loop can ask again.
+			pass
+
+		# This runs for text input and for numbers outside the valid range.
+		print("Error - Select a service from 1 to 8.")
+
+#task 3 starts here#-------------------------------------------------------------------------------------
+	
+def validate_booking_reference():
+    # Read and normalize the booking reference.
+    reference = input("Enter booking reference: ")
+    normalized = reference.strip().upper()     # Add replace(" ") to remove the spaces ?
+
+# while True: We could stay in the loop to make it easier but since the assignmnet does explicict says NOT TO we ignore this improvement. 
+	
+    # Check every part of the required HFL-CCC-NNNN format.
+    is_valid = (
+        len(normalized) == 12
+        and normalized[0:3] == "HFL"
+        and normalized[3] == "-"
+        and normalized[4:7].isalpha()
+        and normalized[7] == "-"
+        and normalized[8:12].isdigit()
+    )
+
+    # Print the result of the validation.
+    if is_valid:
+        print("Booking reference:", normalized)
+        print("Valid booking reference.")
+
+
+    else:
+        print("Invalid booking reference.")
 
 #task 3 starts here#-------------------------------------------------------------------------------------
 def read_positive_number(prompt):       #this will be importamt for task 5-9
