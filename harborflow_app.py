@@ -66,30 +66,28 @@ def read_menu_choice():
 
 #task 2 starts here#-------------------------------------------------------------------------------------	
 def validate_booking_reference():
-    # Read and normalize the booking reference.
-    reference = input("Enter booking reference: ")
-    normalized = reference.strip().upper()     # Add replace(" ") to remove the spaces ?
+    while True:
+        # Read and normalize the booking reference.
+        reference = input("\nEnter booking reference: ")
+        normalized = reference.strip().upper()
 
-# while True: We could stay in the loop to make it easier but since the assignmnet does explicict says NOT TO we ignore this improvement. 
-	
-    # Check every part of the required HFL-CCC-NNNN format.
-    is_valid = (
-        len(normalized) == 12
-        and normalized[0:3] == "HFL"
-        and normalized[3] == "-"
-        and normalized[4:7].isalpha()
-        and normalized[7] == "-"
-        and normalized[8:12].isdigit()
-    )
+        # Check the required HFL-CCC-NNNN format.
+        is_valid = (
+            len(normalized) == 12
+            and normalized[0:3] == "HFL"
+            and normalized[3] == "-"
+            and normalized[4:7].isalpha()
+            and normalized[7] == "-"
+            and normalized[8:12].isdigit()
+        )
 
-    # Print the result of the validation.
-    if is_valid:
-        print("Booking reference:", normalized)
-        print("Valid booking reference.")
+        if is_valid:
+            print("Booking reference:", normalized)
+            print("Valid booking reference.\n")
+            return
 
+        print("Invalid booking reference. Check the required HFL-CCC-NNNN format.")
 
-    else:
-        print("Invalid booking reference.")
 #task 2 ends here#-------------------------------------------------------------------------------------
 
 
