@@ -42,6 +42,6 @@ def classify_service_performance():
 
     print(f"Delay: {delay} minutes")
     print(f"Service status: {status}")
-    
+
 if __name__ == "__main__":
-    main()
+    classify_service_performance()
