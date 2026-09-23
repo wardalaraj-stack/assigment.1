@@ -208,7 +208,141 @@ def calculate_delivery_quote():
 Returning to DISPATCH CONSOLE ...
 """)
 #task 3 ends here#-------------------------------------------------------------------------------------
+"""
+DIT014 - Assignment 1 - HarborFlow Dispatch Console
+Task 4: Consolidate parcel labels
 
+SPEC-SAFE VERSION:
+- splits at commas
+- removes SURROUNDING spaces
+- converts to uppercase
+- removes duplicates
+- preserves first-seen order
+- does NOT use set()
+"""
+
+
+def consolidate_parcel_labels():
+    # Read the complete scanner export from one console line.
+    raw_input = input("Scanned labels: ")
+
+    # Split the original text wherever a comma appears.
+    label_parts = raw_input.split(",")
+
+    # This list stores only the first occurrence of each normalized label.
+    unique_labels = []
+
+    # Process labels from left to right.
+    for part in label_parts:
+        # Official Task 4 normalization:
+        # strip() removes whitespace only from the beginning and end.
+        # upper() converts letters to uppercase.
+        # replace(" ", "") removes ordinary internal space characters.
+        cleaned = part.strip().upper().replace(" ", "")
+
+        # Add the label only when it has not already been retained.
+        if cleaned not in unique_labels:
+            unique_labels.append(cleaned)
+
+    print("Unique load list:")
+
+    # Print numbered output starting at 1.
+    for index in range(len(unique_labels)):
+        print(f"{index + 1}. {unique_labels[index]}")
+
+    print(f"Total unique parcels: {len(unique_labels)}")
+    #task 4 ends here#-------------------------------------------------------------------------------------
+"""
+DIT014 - Assignment 1 - HarborFlow Dispatch Console
+Task 5: Check van capacity
+
+Includes the Task 8 validation relevant to:
+- van capacity > 0
+- every parcel weight > 0
+"""
+
+
+def read_positive_number(prompt):
+    """Read one numeric value greater than zero."""
+    while True:
+        raw_value = input(prompt)
+
+        try:
+            value = float(raw_value)
+        except ValueError:
+            print("Error - Value must be greater than zero.")
+            continue
+
+        if value > 0:
+            return value
+
+        print("Error - Value must be greater than zero.")
+
+
+def read_positive_weights():
+    """Read one comma-separated line where every parcel weight is > 0."""
+    while True:
+        raw_weights = input("Parcel weights (kg): ")
+        parts = raw_weights.split(",")
+
+        weights = []
+        valid = True
+
+        for part in parts:
+            cleaned_part = part.strip()
+
+            try:
+                weight = float(cleaned_part)
+            except ValueError:
+                valid = False
+                break
+
+            if weight <= 0:
+                valid = False
+                break
+
+            weights.append(weight)
+
+        if valid:
+            return weights
+
+        print("Error - Value must be greater than zero.")
+
+
+def check_van_capacity():
+    # Read and validate one positive van weight capacity.
+    capacity = read_positive_number("Van capacity (kg): ")
+
+    # Read and validate all parcel weights from one comma-separated line.
+    weights = read_positive_weights()
+
+    # State used while processing parcels.
+    remaining = capacity
+    accepted = []
+    rejected = []
+    loaded = 0.0
+
+    # Process parcel weights from left to right.
+    for index in range(len(weights)):
+        weight = weights[index]
+
+        if weight <= remaining:
+            print(f"Parcel {index + 1}: ACCEPTED")
+
+            accepted.append(weight)
+            loaded += weight
+            remaining -= weight
+        else:
+            print(f"Parcel {index + 1}: REJECTED")
+
+            # Do NOT stop here: a later lighter parcel may still fit.
+            rejected.append([index + 1, weight])
+
+    print(f"Accepted parcels: {len(accepted)}")
+    print(f"Loaded weight: {loaded:.2f} kg")
+    print(f"Remaining capacity: {remaining:.2f} kg")
+    
+  #Task_05 endshere#----------------------------------------------
 
 #Task_09 starts here#----------------------------------------------
 def compare_service_scenarios():
