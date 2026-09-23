@@ -1,7 +1,6 @@
 """HarborFlow Assignment 1 starter file."""
 
 #task 1 starts here#-------------------------------------------------------------------------------------
-
 def print_menu():
 	# Display all services that the dispatcher can select.
 	# Each print statement creates one exact line of the required menu.
@@ -14,7 +13,6 @@ def print_menu():
 	print("6. Classify service performance")
 	print("7. Produce weekly dispatch report")
 	print("8. Compare service scenarios")
-
 
 def main():
 	# Keep the console open and send each menu choice to the correct function.
@@ -47,8 +45,6 @@ def main():
 		elif choice == 8:
 			compare_service_scenarios()
 
-
-
 def read_menu_choice():
 	# Keep asking until the user enters an integer from 1 through 8.
 	while True:
@@ -65,9 +61,10 @@ def read_menu_choice():
 
 		# This runs for text input and for numbers outside the valid range.
 		print("Error - Select a service from 1 to 8.")
+#task 1 ends here#-------------------------------------------------------------------------------------
 
-#task 3 starts here#-------------------------------------------------------------------------------------
-	
+
+#task 2 starts here#-------------------------------------------------------------------------------------	
 def validate_booking_reference():
     # Read and normalize the booking reference.
     reference = input("Enter booking reference: ")
@@ -93,6 +90,8 @@ def validate_booking_reference():
 
     else:
         print("Invalid booking reference.")
+#task 2 ends here#-------------------------------------------------------------------------------------
+
 
 #task 3 starts here#-------------------------------------------------------------------------------------
 def read_positive_number(prompt):       #this will be importamt for task 5-9
@@ -208,20 +207,8 @@ def calculate_delivery_quote():
 Returning to DISPATCH CONSOLE ...
 """)
 #task 3 ends here#-------------------------------------------------------------------------------------
-"""
-DIT014 - Assignment 1 - HarborFlow Dispatch Console
-Task 4: Consolidate parcel labels
 
-SPEC-SAFE VERSION:
-- splits at commas
-- removes SURROUNDING spaces
-- converts to uppercase
-- removes duplicates
-- preserves first-seen order
-- does NOT use set()
-"""
-
-
+#task 4 starts here#-------------------------------------------------------------------------------------
 def consolidate_parcel_labels():
     # Read the complete scanner export from one console line.
     raw_input = input("Scanned labels: ")
@@ -252,33 +239,9 @@ def consolidate_parcel_labels():
 
     print(f"Total unique parcels: {len(unique_labels)}")
     #task 4 ends here#-------------------------------------------------------------------------------------
-"""
-DIT014 - Assignment 1 - HarborFlow Dispatch Console
-Task 5: Check van capacity
+#task 4 ends here#-------------------------------------------------------------------------------------
 
-Includes the Task 8 validation relevant to:
-- van capacity > 0
-- every parcel weight > 0
-"""
-
-
-def read_positive_number(prompt):
-    """Read one numeric value greater than zero."""
-    while True:
-        raw_value = input(prompt)
-
-        try:
-            value = float(raw_value)
-        except ValueError:
-            print("Error - Value must be greater than zero.")
-            continue
-
-        if value > 0:
-            return value
-
-        print("Error - Value must be greater than zero.")
-
-
+#task 5 starts here#-------------------------------------------------------------------------------------
 def read_positive_weights():
     """Read one comma-separated line where every parcel weight is > 0."""
     while True:
@@ -307,7 +270,6 @@ def read_positive_weights():
             return weights
 
         print("Error - Value must be greater than zero.")
-
 
 def check_van_capacity():
     # Read and validate one positive van weight capacity.
@@ -345,7 +307,9 @@ def check_van_capacity():
   #Task_05 endshere#----------------------------------------------
 
   # ---------- Task 6: Classify service performance ----------
+#task 5 ends here#-------------------------------------------------------------------------------------
 
+#task 6 starts here#-------------------------------------------------------------------------------------
 def read_not_negative_number(prompt):
     """Repeatedly read a number that may be zero but not negative."""
     # Keep asking until a valid value is entered; return exits the loop.
@@ -363,7 +327,6 @@ def read_not_negative_number(prompt):
         else:
             # Valid value: hand it back to the caller.
             return value
-
 
 def classify_service_performance():
     """Read route data, calculate delay and print the service status."""
@@ -388,8 +351,13 @@ def classify_service_performance():
 
     print(f"Delay: {delay} minutes")
     print(f"Service status: {status}")
-
 #Task_06 endshere#----------------------------------------------
+
+
+#task 7 starts here#-------------------------------------------------------------------------------------
+
+#task 7 ends here#-------------------------------------------------------------------------------------
+
 
 #Task_09 starts here#----------------------------------------------
 def compare_service_scenarios():
