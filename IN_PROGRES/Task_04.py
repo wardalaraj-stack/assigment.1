@@ -18,6 +18,7 @@
 # ---------------------------------------------------------------------------
 
 
+#Task 4 starts here#-------------------------------------------------------------------------------------
 def consolidate_parcel_labels():
     """
      
@@ -51,7 +52,6 @@ def consolidate_parcel_labels():
     label_parts = raw_input.split(",")
 
     # Create an empty list that will store only the unique normalized labels.
-    # We do NOT use set() because the assignment explicitly forbids it.
     unique_labels = []
 
     # Loop through every item created by the split.
@@ -60,18 +60,16 @@ def consolidate_parcel_labels():
         cleaned = item.strip().upper()
 
         # Ignore empty items such as "", " ", or labels made by repeated commas.
-        # This prevents blank labels from being counted or printed.
         if cleaned == "":
+        # This prevents blank labels from being counted or printed.
             continue
 
-        # Normalize the label to uppercase so case differences do not create duplicates.
-        normalized = cleaned.upper()
 
         # Check whether this normalized label has already appeared.
         # This is the duplicate check using a list.
         # If it is not in the list, add it in first-seen order.
-        if normalized not in unique_labels:
-            unique_labels.append(normalized)
+        if cleaned not in unique_labels:
+            unique_labels.append(cleaned)
             #.append() adds the new label to the end of the list, preserving order.
 
     # Print each normalized label with numbering starting at 1.
@@ -81,7 +79,7 @@ def consolidate_parcel_labels():
 
     # Print the total number of unique labels.
     print("Total labels: " + str(len(unique_labels)))
-
+#Task 4 ends here#-------------------------------------------------------------------------------------
 
 def print_menu():
     print("HARBORFLOW DISPATCH CONSOLE")

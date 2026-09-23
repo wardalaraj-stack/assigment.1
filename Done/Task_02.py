@@ -1,3 +1,4 @@
+#Task_02 starts here#
 def validate_booking_reference():
     reference = input("Enter booking reference: ")
     normalized = reference.strip().upper()
@@ -27,10 +28,25 @@ def validate_booking_reference():
             is_valid = True
 
     if is_valid:
-        print("Booking reference: " + normalized)
+        print(f"\nBooking reference: {normalized}")
         print("Valid booking reference.")
+        print("Returning to main menu...")
     else:
-        print("Invalid booking reference.")
+        print(f"""
+Invalid booking reference.
+Expected format: HFL-XXX-YYYY
+    
+1. Validate again 
+2. Exit
+        """)
+
+        servise = input("Select an option: ").strip()
+        if servise == "1":
+            validate_booking_reference()
+        elif servise == "2":
+            print("Goodbye.")
+            main()
+#Task_02 ends here#
 
 
 def main():
