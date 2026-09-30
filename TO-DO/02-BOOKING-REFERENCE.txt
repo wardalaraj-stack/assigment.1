@@ -1,5 +1,0 @@
-TASK 2: Validate booking reference
-
-[ ] Normalize spaces and lowercase letters
-[ ] Check the HFL-CCC-NNNN format
-[ ] Print valid or invalid result

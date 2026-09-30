@@ -1,5 +1,0 @@
-TASK 3: Calculate delivery quote
-
-[ ] Read distance, weight, and service code
-[ ] Calculate the correct service price
-[ ] Print the quote with two decimals
