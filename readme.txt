@@ -39,8 +39,23 @@ list comprehensions, classes, third-party packages, and exit().
 - Validated the work submitted by group members and integrated the completed 
 task implementations into the final console structure.
 
-Name: [Confirm remaining group member]
-Contribution: [Add concrete contribution before submission.]
+Name: Waldean Nelson
+Contribution: 
+- Implemented Task 6 (Classify service performance): reads promised
+  minutes, actual minutes and damaged parcels, calculates the delay and
+  applies the decision table in order, with damage taking priority over
+  timing. Includes validation so negative values are rejected and only
+  the affected prompt repeats.
+- Implemented Task 7 (Produce weekly dispatch report): reads and
+  validates seven daily delivery counts and a target, then calculates
+  the total, average, highest/lowest day (last day wins on ties) and
+  days meeting the target without using max(), min(), sum() or index().
+- Wrote a script to create and validate entries in test-ledger.csv,
+  and wrote the boundary and validation test cases for Tasks 6 and 7.
+- Set up the team's GitHub repository and introduced the group to it
+  for version control and integrating each member's code.
+- Set up a Trello board to track task ownership and monitor the
+  group's progress.
 
 Name (if applicable): [Confirm fourth member]
 Contribution: [Add concrete contribution before submission.]
