@@ -7,8 +7,38 @@ Python version tested: Python 3.14.7 (menu smoke test)
 
 Team members and concrete contributions
 ---------------------------------------
-Name: Raydel
-Contribution: To be completed by the team.
+Name: Raydel Savón Hernández
+Contribution:
+ Implemented Task 1 (Build the dispatch menu), including the persistent main
+  menu, menu selection handling, conditional dispatch to the corresponding
+  service functions, and closing the console through loop state rather than
+  using exit().
+- Structured the menu so that each service is called through its corresponding
+  function and control returns safely to the main menu after a service finishes.
+- Implemented Task 2 (Validate booking reference), including normalization of
+  user input and validation of the required HFL-CCC-NNNN structure.
+- Implemented checks for the fixed HFL prefix, exact reference length, required
+  hyphen positions, three-letter customer code, and four-digit shipment number
+  without using regular expressions.
+- Implemented the repeated validation flow for Task 2 so that invalid booking
+  references are rejected and the user is prompted again without being returned
+  prematurely to the main menu.
+- Tested Tasks 1 and 2 against the assignment requirements, including menu
+  dispatch, return-to-menu behavior, controlled console closing, lowercase and
+  whitespace normalization, incorrect reference length, misplaced hyphens,
+  invalid customer codes, invalid shipment numbers, and invalid-to-valid
+  recovery.
+- Recorded the Task 1 and Task 2 test results in the team's shared test ledger,
+  with all tested cases passing.
+- Participated in the final testing of the integrated HarborFlow Dispatch
+  Console, checking the combined application after the individual task
+  implementations had been brought together.
+- Participated in the final integration and merge of the team's work into the
+  shared console and helped verify that the integrated application worked as
+  one complete program.
+- Coordinated much of the team's practical collaboration by arranging meeting
+  dates, communicating availability, and booking places for in-person team
+  meetings.
 
 Name: Abdalsalam Ward Alaraj
 Contribution:
@@ -68,4 +98,4 @@ How shared calculations are reused: calculate_quote(distance, weight, service_co
 
 Known limitations
 -----------------
-The menu and Task 2 entries in the test ledger still need final recorded results. Task 3 and Task 9 need output-format review against the PDF contract. Confirm all group member names and contributions above.
+Task 3 and Task 9 need output-format review against the PDF contract. Confirm all group member names and contributions above.
