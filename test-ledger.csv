@@ -1,7 +1,15 @@
 area,test_case,input_summary,expected_result,actual_result,owner,status,date
-Menu,Close console,Option 1,Closing message printed exactly once,,,Not run,
-Reference,Valid lowercase,Lowercase valid reference,Normalized valid reference,,,Not run,
-Quote,Decimal values,"distance 12.5, weight 8, service X","197.81 SEK with two decimal places","Express; 197.81 SEK; returns to menu; output labels contain spelling errors: Delevery qoute",Abdalsalam Ward Alaraj,Needs review,2026-09-30
+Task 1: Menu,Close console,Option 1,"Closing message printed exactly once and program ends","Closing message printed exactly once and program ended",Raydel,Passed,2026-10-05
+Task 1: Menu,Return after Task 2,"Option 2; HFL-NOR-2048","Task 2 accepts reference and returns to persistent main menu","Reference accepted and main menu displayed again",Raydel,Passed,2026-10-05
+Task 1: Menu,Service dispatch,"Options 2 through 8","Each menu option calls its corresponding service function","All options dispatched to their corresponding service functions",Raydel,Passed,2026-10-05
+Task 2: Reference,Valid lowercase,hfl-nor-2048,"Input normalized to HFL-NOR-2048 and accepted","Booking reference normalized to HFL-NOR-2048 and accepted",Raydel,Passed,2026-10-05
+Task 2: Reference,Leading and trailing spaces,"   hfl-nor-2048   ","Surrounding spaces removed; reference normalized and accepted","Surrounding spaces removed; HFL-NOR-2048 accepted",Raydel,Passed,2026-10-05
+Task 2: Reference,Wrong length,HFL-NOR-204,"Reference rejected and booking-reference prompt repeats","Invalid reference rejected; booking-reference prompt repeated; valid follow-up accepted",Raydel,Passed,2026-10-05
+Task 2: Reference,Misplaced hyphen,HFLN-OR-2048,"Reference rejected because required hyphens are misplaced; prompt repeats","Invalid reference rejected; booking-reference prompt repeated; valid follow-up accepted",Raydel,Passed,2026-10-05
+Task 2: Reference,Digit in customer code,HFL-N4R-2048,"Reference rejected because customer code must contain three letters; prompt repeats","Invalid reference rejected; booking-reference prompt repeated; valid follow-up accepted",Raydel,Passed,2026-10-05
+Task 2: Reference,Non-digit shipment number,HFL-NOR-20A8,"Reference rejected because shipment number must contain four digits; prompt repeats","Invalid reference rejected; booking-reference prompt repeated; valid follow-up accepted",Raydel,Passed,2026-10-05
+Task 2: Reference,Invalid then valid,"HFL-N4R-2048 then hfl-nor-2048","Invalid reference rejected without returning to main menu; second reference normalized and accepted","First reference rejected; Task 2 remained active; second reference normalized to HFL-NOR-2048 and accepted; returned to main menu",Raydel,Passed,2026-10-05
+Task 3: Quote,Decimal values,"distance 12.5, weight 8, service X","197.81 SEK with two decimal places","Express; 197.81 SEK; returns to menu; output labels contain spelling errors: Delevery qoute",Abdalsalam Ward Alaraj,Needs review,2026-09-30
 Task 3,Standard service code,"distance 10, weight 2, service S","Standard quote 118.00","calculate_quote returned 118.00",Abdalsalam Ward Alaraj,Passed,2026-09-30
 Task 3,Express service code,"distance 10, weight 2, service X","Express quote 147.50","calculate_quote returned 147.50",Abdalsalam Ward Alaraj,Passed,2026-09-30
 Task 3,Priority service code,"distance 10, weight 2, service P","Priority quote 188.80","calculate_quote returned 188.80",Abdalsalam Ward Alaraj,Passed,2026-09-30
